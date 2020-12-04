@@ -1,1 +1,1 @@
-from .resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver
+from .solver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver, DayFourTaskOneSolver, DayFourTaskTwoSolver

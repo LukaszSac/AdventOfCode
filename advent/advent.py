@@ -1,4 +1,4 @@
-from advent.resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver
+from advent.resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver, DayFourTaskOneSolver, DayFourTaskTwoSolver
 
 
 class AdventOfCode2020Solver:
@@ -38,5 +38,21 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} passwords are correct'
+
+    @staticmethod
+    def get_day_4_task_1_solution():
+        input_file_dir = './resources/inputs/day4input.txt'
+        solver = DayFourTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} passports are valid'
+
+    @staticmethod
+    def get_day_4_task_2_solution():
+        input_file_dir = './resources/inputs/day4input.txt'
+        solver = DayFourTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} passports are valid'
 
 
