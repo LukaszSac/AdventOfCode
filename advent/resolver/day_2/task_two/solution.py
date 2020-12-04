@@ -1,6 +1,6 @@
 import re
 
-input_lines = open('../input.txt', 'r').read().split('\n')[:-1]
+input_lines = open('../dayone day2input.txt', 'r').read().split('\n')[:-1]
 cnt = 0
 for input_line in input_lines:
     first, second, requirement, password = re.match(r'(\d+)-(\d+)\s(\w):\s(.*)', input_line).groups()

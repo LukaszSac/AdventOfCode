@@ -1,0 +1,1 @@
+from .advent import AdventOfCode2020Solver

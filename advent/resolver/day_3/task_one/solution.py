@@ -1,5 +1,5 @@
 
-input = open('../input.txt', 'r')
+input = open('../dayone day2input.txt', 'r')
 input_line = input.read().split('\n')[1:-1]
 one_column_width = len(input_line[0])
 right_pos = 0

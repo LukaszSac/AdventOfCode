@@ -1,4 +1,4 @@
-input_file = open('../input.txt', 'r')
+input_file = open('../dayone day2input.txt', 'r')
 input_line = input_file.read().split('\n')[1:-1]
 one_column_width = len(input_line[0])
 traversals = list()
