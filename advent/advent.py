@@ -1,4 +1,4 @@
-from advent.resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver, DayFourTaskOneSolver, DayFourTaskTwoSolver
+from advent.resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver, DayFourTaskOneSolver, DayFourTaskTwoSolver, DayFiveTaskOneSolver, DayFiveTaskTwoSolver
 
 
 class AdventOfCode2020Solver:
@@ -54,5 +54,21 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} passports are valid'
+
+    @staticmethod
+    def get_day_5_task_1_solution():
+        input_file_dir = './resources/inputs/day5input.txt'
+        solver = DayFiveTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the highest seat id'
+
+    @staticmethod
+    def get_day_5_task_2_solution():
+        input_file_dir = './resources/inputs/day5input.txt'
+        solver = DayFiveTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the missing seat id'
 
 

@@ -82,7 +82,7 @@ class DayOneTaskTwoSolver(Solver):
         while self._data[right_index] < self.__desired_sum:
             desired_sum_complement = self.__desired_sum - self._data[right_index]
             try:
-                first_number, second_number = self.__get_two_numbers_summing_to_desired_sum(desired_sum_complement, 0, right_index-1)
+                first_number, second_number = self.__get_two_numbers_summing_to_desired_sum(desired_sum_complement, 0, right_index - 1)
                 return first_number, second_number, self._data[right_index]
             except SolutionNotFoundException:
                 right_index += 1
@@ -109,6 +109,7 @@ class DayTwoTaskOneSolver(Solver):
         def cast_values_in_tuple(tp):
             least, most, req, pw = tp
             return int(least), int(most), req, pw
+
         return list(map(cast_values_in_tuple, list_of_data))
 
     @staticmethod
@@ -151,6 +152,7 @@ class DayTwoTaskTwoSolver(Solver):
         def cast_values_in_tuple(raw_data_tuple):
             first, second, req, pw = raw_data_tuple
             return int(first), int(second), req, pw
+
         return list(map(cast_values_in_tuple, list_of_data))
 
     @staticmethod
@@ -182,7 +184,8 @@ class DayFourTaskOneSolver(Solver):
         OPTIONAL = 2
 
     def __init__(self):
-        self.__allowed_keys = {'byr': {'field_type': self.__field_types.MANDATORY}, 'iyr': {'field_type': self.__field_types.MANDATORY}, 'eyr': {'field_type': self.__field_types.MANDATORY}, 'hgt': {'field_type': self.__field_types.MANDATORY}, 'hcl': {'field_type': self.__field_types.MANDATORY}, 'ecl': {'field_type': self.__field_types.MANDATORY}, 'pid': {'field_type': self.__field_types.MANDATORY}, 'cid': {'field_type': self.__field_types.OPTIONAL}}
+        self.__allowed_keys = {'byr': {'field_type': self.__field_types.MANDATORY}, 'iyr': {'field_type': self.__field_types.MANDATORY}, 'eyr': {'field_type': self.__field_types.MANDATORY}, 'hgt': {'field_type': self.__field_types.MANDATORY},
+                               'hcl': {'field_type': self.__field_types.MANDATORY}, 'ecl': {'field_type': self.__field_types.MANDATORY}, 'pid': {'field_type': self.__field_types.MANDATORY}, 'cid': {'field_type': self.__field_types.OPTIONAL}}
         self.__count_of_mandatory_fields = 0
         for value in self.__allowed_keys.values():
             if value['field_type'] == self.__field_types.MANDATORY:
@@ -246,7 +249,8 @@ class DayFourTaskTwoSolver(Solver):
         OPTIONAL = 2
 
     def __init__(self):
-        self.__allowed_keys = {'byr': {'field_type': self.__field_types.MANDATORY}, 'iyr': {'field_type': self.__field_types.MANDATORY}, 'eyr': {'field_type': self.__field_types.MANDATORY}, 'hgt': {'field_type': self.__field_types.MANDATORY}, 'hcl': {'field_type': self.__field_types.MANDATORY}, 'ecl': {'field_type': self.__field_types.MANDATORY}, 'pid': {'field_type': self.__field_types.MANDATORY}, 'cid': {'field_type': self.__field_types.OPTIONAL}}
+        self.__allowed_keys = {'byr': {'field_type': self.__field_types.MANDATORY}, 'iyr': {'field_type': self.__field_types.MANDATORY}, 'eyr': {'field_type': self.__field_types.MANDATORY}, 'hgt': {'field_type': self.__field_types.MANDATORY},
+                               'hcl': {'field_type': self.__field_types.MANDATORY}, 'ecl': {'field_type': self.__field_types.MANDATORY}, 'pid': {'field_type': self.__field_types.MANDATORY}, 'cid': {'field_type': self.__field_types.OPTIONAL}}
         self.__count_of_mandatory_fields = 0
         for value in self.__allowed_keys.values():
             if value['field_type'] == self.__field_types.MANDATORY:
@@ -288,18 +292,18 @@ class DayFourTaskTwoSolver(Solver):
         count_of_mandatory_fields_in_passport = self.__get_count_of_mandatory_fields_in_passport(passport)
         if count_of_mandatory_fields_in_passport != self.__count_of_mandatory_fields:
             return False
-        if not(1920 <= int(passport['byr']) <= 2002):
+        if not (1920 <= int(passport['byr']) <= 2002):
             return False
-        if not(2010 <= int(passport['iyr']) <= 2020):
+        if not (2010 <= int(passport['iyr']) <= 2020):
             return False
-        if not(2020 <= int(passport['eyr']) <= 2030):
+        if not (2020 <= int(passport['eyr']) <= 2030):
             return False
         if passport['hgt'][-2:] not in ['cm', 'in']:
             return False
         if passport['hgt'][-2:] == 'cm':
-            if not(150 <= int(passport['hgt'][:-2]) <= 193):
+            if not (150 <= int(passport['hgt'][:-2]) <= 193):
                 return False
-        elif not(59 <= int(passport['hgt'][:-2]) <= 76):
+        elif not (59 <= int(passport['hgt'][:-2]) <= 76):
             return False
         if passport['hcl'][0] != '#':
             return False
@@ -320,3 +324,126 @@ class DayFourTaskTwoSolver(Solver):
                 count_of_valid_passports += 1
         return count_of_valid_passports
 
+
+class DayFiveTaskOneSolver(Solver):
+
+    def load_and_process_data(self, input_file_dir):
+        parsed_input_data = self._get_parsed_input_data(input_file_dir)
+        self._data = parsed_input_data
+        self.__define_config()
+        pass
+
+    @staticmethod
+    def __get_lower_half(lower_number, higher_number):
+        difference = higher_number - lower_number
+        difference = int(difference / 2)
+        return lower_number, higher_number - difference - 1
+
+    @staticmethod
+    def __get_upper_half(lower_number, higher_number):
+        difference = higher_number - lower_number
+        difference = int(difference / 2)
+        return lower_number + difference + 1, higher_number
+
+    def __define_config(self):
+        self.__config = {
+            'F': self.__get_lower_half,
+            'B': self.__get_upper_half,
+            'L': self.__get_lower_half,
+            'R': self.__get_upper_half
+        }
+        pass
+
+    def __get_seat_id(self, seat_code):
+        row_code = seat_code[:-3]
+        column_code = seat_code[-3:]
+        lower_number = 0
+        higher_number = 127
+        for partition in row_code:
+            lower_number, higher_number = self.__config[partition](lower_number, higher_number)
+        row_number = int(lower_number)
+        lower_number = 0
+        higher_number = 7
+        for partition in column_code:
+            lower_number, higher_number = self.__config[partition](lower_number, higher_number)
+        column_number = int(lower_number)
+        return row_number * 8 + column_number
+
+    def __get_highest_seat_id(self):
+        max_seat_id = 0
+        for seat_code in self._data:
+            seat_id = self.__get_seat_id(seat_code)
+            if seat_id > max_seat_id:
+                max_seat_id = seat_id
+        return max_seat_id
+
+    def get_solution(self):
+        if self._data is None:
+            raise DataNotLoadedException
+        return self.__get_highest_seat_id()
+
+
+class DayFiveTaskTwoSolver(Solver):
+
+    def load_and_process_data(self, input_file_dir):
+        parsed_input_data = self._get_parsed_input_data(input_file_dir)
+        self._data = parsed_input_data
+        self.__define_config()
+        pass
+
+    @staticmethod
+    def __get_lower_half(lower_number, higher_number):
+        difference = higher_number - lower_number
+        difference = int(difference / 2)
+        return lower_number, higher_number - difference - 1
+
+    @staticmethod
+    def __get_upper_half(lower_number, higher_number):
+        difference = higher_number - lower_number
+        difference = int(difference / 2)
+        return lower_number + difference + 1, higher_number
+
+    def __define_config(self):
+        self.__config = {
+            'F': self.__get_lower_half,
+            'B': self.__get_upper_half,
+            'L': self.__get_lower_half,
+            'R': self.__get_upper_half
+        }
+        pass
+
+    def __get_seat_id(self, seat_code):
+        row_code = seat_code[:-3]
+        column_code = seat_code[-3:]
+        lower_number = 0
+        higher_number = 127
+        for partition in row_code:
+            lower_number, higher_number = self.__config[partition](lower_number, higher_number)
+        row_number = int(lower_number)
+        lower_number = 0
+        higher_number = 7
+        for partition in column_code:
+            lower_number, higher_number = self.__config[partition](lower_number, higher_number)
+        column_number = int(lower_number)
+        return row_number * 8 + column_number
+
+    def __get_missing_seat_id(self):
+        seats = {}
+        for seat_id in range(129 * 8):
+            seats[seat_id] = {'is_boarded': False}
+        for seat_code in self._data:
+            seat_id = self.__get_seat_id(seat_code)
+            seats[seat_id]['is_boarded'] = True
+        for seat_id in range(128 * 8):
+            if seats.get(seat_id - 1) is None or seats.get(seat_id + 1) is None:
+                continue
+            is_before_seat_boarded = seats.get(seat_id - 1)['is_boarded']
+            is_this_seat_boarded = seats.get(seat_id)['is_boarded']
+            is_next_seat_boarded = seats.get(seat_id + 1)['is_boarded']
+            if is_before_seat_boarded is True and is_this_seat_boarded is False and is_next_seat_boarded is True:
+                return seat_id
+
+    def get_solution(self):
+        if self._data is None:
+            raise DataNotLoadedException
+        return self.__get_missing_seat_id()
