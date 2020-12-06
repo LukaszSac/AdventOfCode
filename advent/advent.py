@@ -1,4 +1,13 @@
-from advent.resolver import DayOneTaskOneSolver, DayOneTaskTwoSolver, DayTwoTaskOneSolver, DayTwoTaskTwoSolver, DayFourTaskOneSolver, DayFourTaskTwoSolver, DayFiveTaskOneSolver, DayFiveTaskTwoSolver
+from advent.solver.day_1.task_1 import DayOneTaskOneSolver
+from advent.solver.day_1.task_2 import DayOneTaskTwoSolver
+from advent.solver.day_2.task_1.solver import DayTwoTaskOneSolver
+from advent.solver.day_2.task_2.solver import DayTwoTaskTwoSolver
+from advent.solver.day_3.task_1.solver import DayThreeTaskOneSolver
+from advent.solver.day_3.task_2.solver import DayThreeTaskTwoSolver
+from advent.solver.day_4.task_1.solver import DayFourTaskOneSolver
+from advent.solver.day_4.task_2.solver import DayFourTaskTwoSolver
+from advent.solver.day_5.task_1.solver import DayFiveTaskOneSolver
+from advent.solver.day_5.task_2.solver import DayFiveTaskTwoSolver
 
 
 class AdventOfCode2020Solver:
@@ -38,6 +47,22 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} passwords are correct'
+
+    @staticmethod
+    def get_day_3_task_1_solution():
+        input_file_dir = './resources/inputs/day3input.txt'
+        solver = DayThreeTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} encountered trees'
+
+    @staticmethod
+    def get_day_3_task_2_solution():
+        input_file_dir = './resources/inputs/day3input.txt'
+        solver = DayThreeTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} multiplicity of encountered trees with given walking strategies'
 
     @staticmethod
     def get_day_4_task_1_solution():
