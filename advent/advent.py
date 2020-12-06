@@ -1,13 +1,13 @@
 from advent.solver.day_1.task_1 import DayOneTaskOneSolver
 from advent.solver.day_1.task_2 import DayOneTaskTwoSolver
-from advent.solver.day_2.task_1.solver import DayTwoTaskOneSolver
-from advent.solver.day_2.task_2.solver import DayTwoTaskTwoSolver
-from advent.solver.day_3.task_1.solver import DayThreeTaskOneSolver
-from advent.solver.day_3.task_2.solver import DayThreeTaskTwoSolver
-from advent.solver.day_4.task_1.solver import DayFourTaskOneSolver
-from advent.solver.day_4.task_2.solver import DayFourTaskTwoSolver
-from advent.solver.day_5.task_1.solver import DayFiveTaskOneSolver
-from advent.solver.day_5.task_2.solver import DayFiveTaskTwoSolver
+from advent.solver.day_2.task_1 import DayTwoTaskOneSolver
+from advent.solver.day_2.task_2 import DayTwoTaskTwoSolver
+from advent.solver.day_3.task_1 import DayThreeTaskOneSolver
+from advent.solver.day_3.task_2 import DayThreeTaskTwoSolver
+from advent.solver.day_4.task_1 import DayFourTaskOneSolver
+from advent.solver.day_4.task_2 import DayFourTaskTwoSolver
+from advent.solver.day_5.task_1 import DayFiveTaskOneSolver
+from advent.solver.day_5.task_2 import DayFiveTaskTwoSolver
 
 
 class AdventOfCode2020Solver:
