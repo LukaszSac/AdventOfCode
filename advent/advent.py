@@ -8,7 +8,8 @@ from advent.solver.day_4.task_1 import DayFourTaskOneSolver
 from advent.solver.day_4.task_2 import DayFourTaskTwoSolver
 from advent.solver.day_5.task_1 import DayFiveTaskOneSolver
 from advent.solver.day_5.task_2 import DayFiveTaskTwoSolver
-
+from advent.solver.day_6.task_1 import DaySixTaskOneSolver
+from advent.solver.day_6.task_2 import DaySixTaskTwoSolver
 
 class AdventOfCode2020Solver:
     def __init__(self):
@@ -95,5 +96,21 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} is the missing seat id'
+
+    @staticmethod
+    def get_day_6_task_1_solution():
+        input_file_dir = './resources/inputs/day6input.txt'
+        solver = DaySixTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the sum of distinctly yes answered questions in each group'
+
+    @staticmethod
+    def get_day_6_task_2_solution():
+        input_file_dir = './resources/inputs/day6input.txt'
+        solver = DaySixTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the sum of yes answered questions by all in each group'
 
 
