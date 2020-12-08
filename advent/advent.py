@@ -10,6 +10,8 @@ from advent.solver.day_5.task_1 import DayFiveTaskOneSolver
 from advent.solver.day_5.task_2 import DayFiveTaskTwoSolver
 from advent.solver.day_6.task_1 import DaySixTaskOneSolver
 from advent.solver.day_6.task_2 import DaySixTaskTwoSolver
+from advent.solver.day_7.task_1 import DaySevenTaskOneSolver
+from advent.solver.day_7.task_2 import DaySevenTaskTwoSolver
 
 class AdventOfCode2020Solver:
     def __init__(self):
@@ -112,5 +114,21 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} is the sum of yes answered questions by all in each group'
+
+    @staticmethod
+    def get_day_7_task_1_solution():
+        input_file_dir = './resources/inputs/day7input.txt'
+        solver = DaySevenTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the number of bag regulations eventually containing shiny gold bag'
+
+    @staticmethod
+    def get_day_7_task_2_solution():
+        input_file_dir = './resources/inputs/day7input.txt'
+        solver = DaySevenTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the number of required bags inside shiny bags'
 
 
