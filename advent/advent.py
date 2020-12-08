@@ -12,6 +12,8 @@ from advent.solver.day_6.task_1 import DaySixTaskOneSolver
 from advent.solver.day_6.task_2 import DaySixTaskTwoSolver
 from advent.solver.day_7.task_1 import DaySevenTaskOneSolver
 from advent.solver.day_7.task_2 import DaySevenTaskTwoSolver
+from advent.solver.day_8.task_1 import DayEightTaskOneSolver
+from advent.solver.day_8.task_2 import DayEightTaskTwoSolver
 
 class AdventOfCode2020Solver:
     def __init__(self):
@@ -130,5 +132,21 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} is the number of required bags inside shiny bags'
+
+    @staticmethod
+    def get_day_8_task_1_solution():
+        input_file_dir = './resources/inputs/day8input.txt'
+        solver = DayEightTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the accumulator value when program begins to loop'
+
+    @staticmethod
+    def get_day_8_task_2_solution():
+        input_file_dir = './resources/inputs/day8input.txt'
+        solver = DayEightTaskTwoSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the accumulator value when program terminates after getting fixed'
 
 
