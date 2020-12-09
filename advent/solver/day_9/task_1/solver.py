@@ -3,7 +3,6 @@ from advent.solver import Solver
 
 
 class DayNineTaskOneSolver(Solver):
-    __known_commands = {}
     __history_fetching_size = 25
 
     def load_and_process_data(self, input_file_dir):
