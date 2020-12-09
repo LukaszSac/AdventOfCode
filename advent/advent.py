@@ -14,6 +14,8 @@ from advent.solver.day_7.task_1 import DaySevenTaskOneSolver
 from advent.solver.day_7.task_2 import DaySevenTaskTwoSolver
 from advent.solver.day_8.task_1 import DayEightTaskOneSolver
 from advent.solver.day_8.task_2 import DayEightTaskTwoSolver
+from advent.solver.day_9.task_1 import DayNineTaskOneSolver
+from advent.solver.day_9.task_2 import DayNineTaskTwoSolver
 
 class AdventOfCode2020Solver:
     def __init__(self):
@@ -148,5 +150,22 @@ class AdventOfCode2020Solver:
         solver.load_and_process_data(input_file_dir)
         solution = solver.get_solution()
         return f'{solution} is the accumulator value when program terminates after getting fixed'
+
+    @staticmethod
+    def get_day_9_task_1_solution():
+        input_file_dir = './resources/inputs/day9input.txt'
+        solver = DayNineTaskOneSolver()
+        solver.load_and_process_data(input_file_dir)
+        solution = solver.get_solution()
+        return f'{solution} is the number which is not summing up to 2 of previous 25 numbers'
+
+    @staticmethod
+    def get_day_9_task_2_solution():
+        input_file_dir = './resources/inputs/day9input.txt'
+        solver = DayNineTaskTwoSolver()
+        desired_number = 375054920
+        solver.load_and_process_data_with_argument(input_file_dir, desired_number)
+        solution = solver.get_solution()
+        return f'{solution} is the number which is not summing of lowest and biggest number of subset that adds to {desired_number}'
 
 
